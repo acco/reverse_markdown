@@ -27,7 +27,10 @@ module ReverseMarkdown
         text = preserve_nbsp(text)
         text = remove_border_newlines(text)
         text = remove_inner_newlines(text)
-        escape_keychars text
+        unless ReverseMarkdown.config.preserve_existing_markdown
+          text = escape_keychars(text)
+        end
+        text
       end
 
       def preserve_nbsp(text)

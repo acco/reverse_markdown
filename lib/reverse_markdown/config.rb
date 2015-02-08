@@ -1,6 +1,6 @@
 module ReverseMarkdown
   class Config
-    attr_accessor :unknown_tags, :github_flavored
+    attr_accessor :unknown_tags, :github_flavored, :preserve_existing_markdown
 
     def initialize
       @unknown_tags    = :pass_through
@@ -21,6 +21,10 @@ module ReverseMarkdown
 
     def github_flavored
       @inline_options[:github_flavored] || @github_flavored
+    end
+
+    def preserve_existing_markdown
+      @inline_options[:preserve_existing_markdown] || @inline_options
     end
   end
 end
